@@ -1,0 +1,95 @@
+version: '2'
+services:
+  php:
+    container_name: co2_php_1
+    build: ./docker/php
+    ports:
+     - "81:80"
+     - "443:443"
+    volumes:
+     - .:/var/www/html
+     - ./docker/apache:/etc/apache2/sites-enabled:ro
+    networks:
+     - appnet
+  redis:
+    container_name: co2_redis_1
+    image: redis:alpine
+    ports:
+     - "6379:6379"
+    networks:
+     - appnet
+  db:
+    container_name: co2_db_1
+    build: ./docker/postgres
+    ports:
+     - "5432:5432"
+    environment:
+      POSTGRES_DB: co2
+      POSTGRES_USER: co2
+      POSTGRES_PASSWORD: co2
+    volumes:
+     - data:/var/lib/postgresql/data
+    networks:
+     - appnet
+  mail:
+    container_name: co2_mail_1
+    image: mailhog/mailhog:latest
+    ports:
+     - "8025:8025"
+    networks:
+     - appnet
+  s3:
+    container_name: co2_s3_1
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: 12345678
+    volumes:
+      - s3:/data
+    networks:
+     - appnet
+    command: server /data
+    # See README.md
+  elastic:
+    container_name: co2_elastic_1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+    environment:
+      discovery.type: "single-node"
+      cluster.name: "docker-cluster"
+      http.host: "0.0.0.0"
+      transport.host: "127.0.0.1"
+      http.cors.enabled: "true"
+      http.cors.allow-origin: "*"
+      xpack.security.enabled: "false"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+    networks:
+      - appnet
+  elastichq:
+    container_name: co2_elastichq_1
+    image: elastichq/elasticsearch-hq
+    ports:
+      - "5000:5000"
+    environment:
+      HQ_DEFAULT_URL: "http://elastic:9200"
+    networks:
+      - appnet
+volumes:
+  data:
+    driver: "local"
+  s3:
+    driver: "local"
+  elastic-data:
+    driver: "local"
+networks:
+  appnet:
+    driver: "bridge"
