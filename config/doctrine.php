@@ -32,7 +32,7 @@ return [
                 'path' => base_path('proxies'),
                 'auto_generate' => env('DOCTRINE_PROXY_AUTOGENERATE', false),
             ],
-            'mappings' => include_once(__DIR__ . '/mappings.php'),
+            'mappings' => include_once (__DIR__ . '/mappings.php'),
             /*
             |--------------------------------------------------------------------------
             | Doctrine events

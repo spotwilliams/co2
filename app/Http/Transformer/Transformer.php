@@ -6,5 +6,4 @@ use Flugg\Responder\Transformers\Transformer as BaseTransformer;
 
 class Transformer extends BaseTransformer
 {
-
 }

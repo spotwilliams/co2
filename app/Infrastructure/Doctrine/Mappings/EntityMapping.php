@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Doctrine\Mappings;
 
 use Co2Control\Entities\Entity;
+use Digbang\DoctrineExtensions\Types\UuidType;
 use LaravelDoctrine\Fluent\Fluent;
 use LaravelDoctrine\Fluent\MappedSuperClassMapping;
 
@@ -17,7 +18,8 @@ class EntityMapping extends MappedSuperClassMapping
 
     public function map(Fluent $builder)
     {
-        $builder->increments('id');
-        $this->blameCapabilities($builder);
+        $builder->field(UuidType::UUID, 'id')->primary();
+        $this->timestamps($builder);
+        $builder->softDelete('deletedAt', 'chronosDateTime');
     }
 }

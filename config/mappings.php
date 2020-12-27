@@ -5,17 +5,10 @@ use App\Infrastructure\Doctrine\Mappings;
 
 return [
     // Embeddables
-    Embeddables\CurrencyMapping::class,
-    Embeddables\EmailMapping::class,
-    Embeddables\MoneyMapping::class,
-    Embeddables\MonthMapping::class,
+    Embeddables\SensorStatusMapping::class,
 
     // Entities
     Mappings\EntityMapping::class,
-    Mappings\IncomeMapping::class,
-    Mappings\EventualIncomeMapping::class,
-    Mappings\MonthlyIncomeMapping::class,
-    Mappings\PeriodMapping::class,
-    Mappings\PersonMapping::class,
-    Mappings\UserMapping::class,
+    Mappings\MeasurementMapping::class,
+    Mappings\SensorMapping::class,
 ];

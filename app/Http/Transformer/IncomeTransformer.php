@@ -11,7 +11,7 @@ class IncomeTransformer extends Transformer
     {
         return [
             'id' => $income->getId(),
-            'monthly' => $income instanceof MonthlyIncome
+            'monthly' => $income instanceof MonthlyIncome,
         ];
     }
 }

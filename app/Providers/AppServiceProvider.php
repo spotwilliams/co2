@@ -3,14 +3,16 @@
 namespace App\Providers;
 
 use App\Infrastructure\Doctrine\Repositories as Doctrine;
-use Illuminate\Support\ServiceProvider;
 use Co2Control\Repositories;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     private $classBindings = [
         //Generic Repositories
         Repositories\PersistRepository::class => Doctrine\DoctrinePersistRepository::class,
+        Repositories\MeasurementRepository::class => Doctrine\DoctrineMeasurementRepository::class,
+        Repositories\SensorRepository::class => Doctrine\DoctrineSensorRepository::class,
     ];
 
     public function register()

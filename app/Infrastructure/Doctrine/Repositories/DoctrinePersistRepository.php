@@ -2,8 +2,8 @@
 
 namespace App\Infrastructure\Doctrine\Repositories;
 
-use Doctrine\ORM\EntityManager;
 use Co2Control\Repositories\PersistRepository;
+use Doctrine\ORM\EntityManager;
 
 class DoctrinePersistRepository implements PersistRepository
 {

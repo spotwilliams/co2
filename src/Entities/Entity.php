@@ -2,22 +2,25 @@
 
 namespace Co2Control\Entities;
 
-use Co2Control\Capabilities\CanBlame;
 use Co2Control\Capabilities\AllowSoftDelete;
 use Co2Control\Capabilities\RegisterTimestamp;
+use Ramsey\Uuid\Uuid;
 
 abstract class Entity
 {
     use AllowSoftDelete;
-    use CanBlame;
     use RegisterTimestamp;
 
-    /** @var int */
+    /** @var Uuid */
     protected $id;
 
-
-    public function getId(): int
+    protected function __construct()
     {
-        return $this->id;
+        $this->id = Uuid::uuid4();
+    }
+
+    public function getId(): string
+    {
+        return $this->id->toString();
     }
 }

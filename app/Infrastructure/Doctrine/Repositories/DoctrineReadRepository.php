@@ -2,11 +2,11 @@
 
 namespace App\Infrastructure\Doctrine\Repositories;
 
+use Co2Control\Repositories\ReadRepository;
 use Digbang\Utils\Doctrine\QueryBuilderDecorator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\EntityRepository;
-use Co2Control\Repositories\ReadRepository;
 
 abstract class DoctrineReadRepository extends EntityRepository implements ReadRepository
 {
