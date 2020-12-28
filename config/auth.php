@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'doctrine',
-            'model' => \Co2Control\Entities\User::class,
+            //'model' => \Co2Control\Entities\User::class,
         ],
 
         // 'users' => [

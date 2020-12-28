@@ -1,5 +1,8 @@
 <?php
 
+use App\Infrastructure\Doctrine\Embeddables;
+use App\Infrastructure\Doctrine\Mappings;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +35,15 @@ return [
                 'path' => base_path('proxies'),
                 'auto_generate' => env('DOCTRINE_PROXY_AUTOGENERATE', false),
             ],
-            'mappings' => include_once (__DIR__ . '/mappings.php'),
+            'mappings' => [
+                // Embeddables
+                Embeddables\SensorStatusMapping::class,
+
+                // Entities
+                Mappings\EntityMapping::class,
+                Mappings\SensorMapping::class,
+                Mappings\MeasurementMapping::class,
+            ],
             /*
             |--------------------------------------------------------------------------
             | Doctrine events
@@ -111,6 +122,7 @@ return [
         DoctrineExtensions\Types\CarbonDateTimeType::CARBONDATETIME => DoctrineExtensions\Types\CarbonDateTimeType::class,
         DoctrineExtensions\Types\CarbonDateTimeTzType::CARBONDATETIMETZ => DoctrineExtensions\Types\CarbonDateTimeTzType::class,
         DoctrineExtensions\Types\CarbonTimeType::CARBONTIME => DoctrineExtensions\Types\CarbonTimeType::class,
+        \Ramsey\Uuid\Doctrine\UuidType::NAME => \Ramsey\Uuid\Doctrine\UuidType::class,
     ],
     /*
     |--------------------------------------------------------------------------
