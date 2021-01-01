@@ -15,6 +15,6 @@ class DoctrineMeasurementRepository extends DoctrineReadRepository implements Me
 
     public function getLastMeasurements(Sensor $sensor, int $howMany): array
     {
-        return $this->findBy(['sensor' => $sensor], ['createdAt' => 'DESC'], $howMany);
+        return $this->findBy(['sensor' => $sensor], ['registeredAt' => 'DESC'], $howMany);
     }
 }

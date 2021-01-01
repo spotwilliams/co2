@@ -6,8 +6,7 @@ use Cake\Chronos\Chronos;
 
 trait AllowSoftDelete
 {
-    /** @var Chronos */
-    protected $deletedAt;
+    protected Chronos $deletedAt;
 
     public function getDeletedAt(): Chronos
     {

@@ -10,6 +10,7 @@ class AppServiceProvider extends ServiceProvider
 {
     private $classBindings = [
         //Generic Repositories
+        Repositories\AlertRepository::class => Doctrine\DoctrineAlertRepository::class,
         Repositories\PersistRepository::class => Doctrine\DoctrinePersistRepository::class,
         Repositories\MeasurementRepository::class => Doctrine\DoctrineMeasurementRepository::class,
         Repositories\SensorRepository::class => Doctrine\DoctrineSensorRepository::class,

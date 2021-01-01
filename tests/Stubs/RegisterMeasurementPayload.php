@@ -3,7 +3,7 @@
 namespace Tests\Stubs;
 
 use Cake\Chronos\Chronos;
-use Co2Control\Contracts\MeasurementPayload;
+use Co2Control\Payloads\MeasurementPayload;
 
 class RegisterMeasurementPayload implements MeasurementPayload
 {

@@ -9,18 +9,18 @@ use Digbang\DoctrineExtensions\Types\ChronosDateTimeType;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
-class MeasurementMapping extends EntityMapping
+class AlertMapping extends EntityMapping
 {
     public function mapFor()
     {
-        return Measurement::class;
+        return Alert::class;
     }
 
     public function map(Fluent $builder)
     {
-        $builder->integer('co2Level');
-        $builder->field(ChronosDateTimeType::CHRONOS_DATETIME, 'registeredAt');
-        $builder->manyToOne(Sensor::class, 'sensor')->inversedBy('measurements');
-        $builder->manyToOne(Alert::class, 'alert')->inversedBy('measurements')->nullable();
+        $builder->field(ChronosDateTimeType::CHRONOS_DATETIME, 'startTime');
+        $builder->field(ChronosDateTimeType::CHRONOS_DATETIME, 'endTime')->nullable();
+        $builder->oneToMany(Measurement::class, 'measurements')->mappedBy('alert');
+        $builder->manyToOne(Sensor::class, 'sensor');
     }
 }

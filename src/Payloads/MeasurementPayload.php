@@ -1,6 +1,6 @@
 <?php
 
-namespace Co2Control\Contracts;
+namespace Co2Control\Payloads;
 
 use Cake\Chronos\Chronos;
 

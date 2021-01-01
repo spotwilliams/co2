@@ -10,8 +10,6 @@ trait RegisterTimestamp
     protected $createdAt;
     /** @var Chronos */
     protected $updatedAt;
-    /** @var Chronos */
-    protected $deletedAt;
 
     public function getCreatedAt(): Chronos
     {

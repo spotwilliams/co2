@@ -9,6 +9,7 @@ class Measurement extends Entity
     private int $co2Level;
     private Chronos $registeredAt;
     private Sensor $sensor;
+    private ?Alert $alert = null;
 
     public function __construct(Sensor $sensor, int $co2Level, Chronos $measurementTime)
     {

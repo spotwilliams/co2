@@ -40,6 +40,7 @@ return [
                 Embeddables\SensorStatusMapping::class,
 
                 // Entities
+                Mappings\AlertMapping::class,
                 Mappings\EntityMapping::class,
                 Mappings\SensorMapping::class,
                 Mappings\MeasurementMapping::class,
