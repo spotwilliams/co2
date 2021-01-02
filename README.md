@@ -63,7 +63,7 @@ All service Layer was developed. Only task in todo is the Controller layer to ma
 }
 ```
 
-* Listing alerts
+* Listing alerts: TODO
   `GET /api/v1/sensors/{uuid}/alerts`
 
 ```json
