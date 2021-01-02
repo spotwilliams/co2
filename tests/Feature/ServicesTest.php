@@ -8,7 +8,7 @@ use Co2Control\Entities\Sensor;
 use Co2Control\Enumerables\SensorStatus;
 use Co2Control\Repositories\AlertRepository;
 use Co2Control\Repositories\SensorRepository;
-use Co2Control\Services\RegisterMeasurement;
+use Co2Control\Services\RegisterMeasurementService;
 use Tests\Stubs\RegisterMeasurementPayload;
 use Tests\TestCase;
 
@@ -16,14 +16,14 @@ class ServicesTest extends TestCase
 {
     private SensorRepository $sensorRepository;
     private AlertRepository $alertRepository;
-    private RegisterMeasurement $registerMeasurement;
+    private RegisterMeasurementService $registerMeasurement;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->sensorRepository = $this->app->get(SensorRepository::class);
         $this->alertRepository = $this->app->get(AlertRepository::class);
-        $this->registerMeasurement = $this->app->get(RegisterMeasurement::class);
+        $this->registerMeasurement = $this->app->get(RegisterMeasurementService::class);
     }
 
     public function testCanRegisterSeveralC02MeasurementsForSensor()
@@ -270,7 +270,6 @@ class ServicesTest extends TestCase
         }
     }
 
-
     public function testWhenAlertIsActiveAndHaveThreeNonConsecutivesMeasurementsWithLowerThanMinimalAlertRemainsOpen()
     {
         $measurements = [
@@ -337,7 +336,7 @@ class ServicesTest extends TestCase
     }
 
     /**
-     * @param RegisterMeasurement $registerMeasurement
+     * @param RegisterMeasurementService $registerMeasurement
      *
      * @return mixed
      */

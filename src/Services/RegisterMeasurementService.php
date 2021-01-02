@@ -12,7 +12,7 @@ use Co2Control\Repositories\MeasurementRepository;
 use Co2Control\Repositories\PersistRepository;
 use Illuminate\Contracts\Events\Dispatcher;
 
-class RegisterMeasurement
+class RegisterMeasurementService
 {
     private MeasurementRepository $measurementRepository;
     private PersistRepository $persistRepository;

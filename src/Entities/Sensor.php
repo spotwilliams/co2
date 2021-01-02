@@ -2,7 +2,6 @@
 
 namespace Co2Control\Entities;
 
-use Co2Control\Constraints\ControlValues;
 use Co2Control\Enumerables\SensorStatus;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
